@@ -1,4 +1,6 @@
-# solidity contracts template
+# New Safe Contracts
+
+> base on GnosisSafe
 
 ## Local Development
 
