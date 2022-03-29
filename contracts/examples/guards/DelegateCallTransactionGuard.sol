@@ -32,7 +32,10 @@ contract DelegateCallTransactionGuard is Guard {
         bytes memory,
         address
     ) external view override {
-        require(operation != Enum.Operation.DelegateCall || to == allowedTarget, "This call is restricted");
+        require(
+            operation != Enum.Operation.DelegateCall || to == allowedTarget,
+            "This call is restricted"
+        );
     }
 
     function checkAfterExecution(bytes32, bool) external view override {}

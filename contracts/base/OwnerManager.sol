@@ -32,7 +32,13 @@ contract OwnerManager is SelfAuthorized {
         for (uint256 i = 0; i < _owners.length; i++) {
             // Owner address cannot be null.
             address owner = _owners[i];
-            require(owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner, "GS203");
+            require(
+                owner != address(0) &&
+                    owner != SENTINEL_OWNERS &&
+                    owner != address(this) &&
+                    currentOwner != owner,
+                "GS203"
+            );
             // No duplicate owners allowed.
             require(owners[owner] == address(0), "GS204");
             owners[currentOwner] = owner;
@@ -97,7 +103,10 @@ contract OwnerManager is SelfAuthorized {
         address newOwner
     ) public authorized {
         // Owner address cannot be null, the sentinel or the Safe itself.
-        require(newOwner != address(0) && newOwner != SENTINEL_OWNERS && newOwner != address(this), "GS203");
+        require(
+            newOwner != address(0) && newOwner != SENTINEL_OWNERS && newOwner != address(this),
+            "GS203"
+        );
         // No duplicate owners allowed.
         require(owners[newOwner] == address(0), "GS204");
         // Validate oldOwner address and check that it corresponds to owner index.

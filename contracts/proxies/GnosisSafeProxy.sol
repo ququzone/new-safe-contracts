@@ -28,7 +28,10 @@ contract GnosisSafeProxy {
         assembly {
             let _singleton := and(sload(0), 0xffffffffffffffffffffffffffffffffffffffff)
             // 0xa619486e == keccak("masterCopy()"). The value is right padded to 32-bytes with 0s
-            if eq(calldataload(0), 0xa619486e00000000000000000000000000000000000000000000000000000000) {
+            if eq(
+                calldataload(0),
+                0xa619486e00000000000000000000000000000000000000000000000000000000
+            ) {
                 mstore(0, _singleton)
                 return(0, 0x20)
             }

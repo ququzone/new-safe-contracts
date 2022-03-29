@@ -111,14 +111,22 @@ contract ModuleManager is SelfAuthorized, Executor {
     /// @param pageSize Maximum number of modules that should be returned.
     /// @return array Array of modules.
     /// @return next Start of the next page.
-    function getModulesPaginated(address start, uint256 pageSize) external view returns (address[] memory array, address next) {
+    function getModulesPaginated(address start, uint256 pageSize)
+        external
+        view
+        returns (address[] memory array, address next)
+    {
         // Init array with max page size
         array = new address[](pageSize);
 
         // Populate return array
         uint256 moduleCount = 0;
         address currentModule = modules[start];
-        while (currentModule != address(0x0) && currentModule != SENTINEL_MODULES && moduleCount < pageSize) {
+        while (
+            currentModule != address(0x0) &&
+            currentModule != SENTINEL_MODULES &&
+            moduleCount < pageSize
+        ) {
             array[moduleCount] = currentModule;
             currentModule = modules[currentModule];
             moduleCount++;

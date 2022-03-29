@@ -36,7 +36,14 @@ contract StorageAccessible {
     function simulateAndRevert(address targetContract, bytes memory calldataPayload) external {
         // solhint-disable-next-line no-inline-assembly
         assembly {
-            let success := delegatecall(gas(), targetContract, add(calldataPayload, 0x20), mload(calldataPayload), 0, 0)
+            let success := delegatecall(
+                gas(),
+                targetContract,
+                add(calldataPayload, 0x20),
+                mload(calldataPayload),
+                0,
+                0
+            )
 
             mstore(0x00, success)
             mstore(0x20, returndatasize())

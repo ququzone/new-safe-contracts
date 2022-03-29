@@ -11,7 +11,8 @@ contract CompatibilityFallbackHandler is DefaultCallbackHandler, ISignatureValid
     //keccak256(
     //    "SafeMessage(bytes message)"
     //);
-    bytes32 private constant SAFE_MSG_TYPEHASH = 0x60b3cbf8b4a223d68d641b3b6ddf9a298e7f33710cf3d3a9d1146b5a6150fbca;
+    bytes32 private constant SAFE_MSG_TYPEHASH =
+        0x60b3cbf8b4a223d68d641b3b6ddf9a298e7f33710cf3d3a9d1146b5a6150fbca;
 
     bytes4 internal constant SIMULATE_SELECTOR = bytes4(keccak256("simulate(address,bytes)"));
 
@@ -25,7 +26,12 @@ contract CompatibilityFallbackHandler is DefaultCallbackHandler, ISignatureValid
      * @param _signature Signature byte array associated with _data
      * @return a bool upon valid or invalid signature with corresponding _data
      */
-    function isValidSignature(bytes calldata _data, bytes calldata _signature) public view override returns (bytes4) {
+    function isValidSignature(bytes calldata _data, bytes calldata _signature)
+        public
+        view
+        override
+        returns (bytes4)
+    {
         // Caller should be a Safe
         GnosisSafe safe = GnosisSafe(payable(msg.sender));
         bytes32 messageHash = getMessageHashForSafe(safe, _data);
@@ -48,9 +54,21 @@ contract CompatibilityFallbackHandler is DefaultCallbackHandler, ISignatureValid
     /// @param safe Safe to which the message is targeted
     /// @param message Message that should be hashed
     /// @return Message hash.
-    function getMessageHashForSafe(GnosisSafe safe, bytes memory message) public view returns (bytes32) {
+    function getMessageHashForSafe(GnosisSafe safe, bytes memory message)
+        public
+        view
+        returns (bytes32)
+    {
         bytes32 safeMessageHash = keccak256(abi.encode(SAFE_MSG_TYPEHASH, keccak256(message)));
-        return keccak256(abi.encodePacked(bytes1(0x19), bytes1(0x01), safe.domainSeparator(), safeMessageHash));
+        return
+            keccak256(
+                abi.encodePacked(
+                    bytes1(0x19),
+                    bytes1(0x01),
+                    safe.domainSeparator(),
+                    safeMessageHash
+                )
+            );
     }
 
     /**
@@ -63,7 +81,11 @@ contract CompatibilityFallbackHandler is DefaultCallbackHandler, ISignatureValid
      * @return a bool upon valid or invalid signature with corresponding _dataHash
      * @notice See https://github.com/gnosis/util-contracts/blob/bb5fe5fb5df6d8400998094fb1b32a178a47c3a1/contracts/StorageAccessible.sol
      */
-    function isValidSignature(bytes32 _dataHash, bytes calldata _signature) external view returns (bytes4) {
+    function isValidSignature(bytes32 _dataHash, bytes calldata _signature)
+        external
+        view
+        returns (bytes4)
+    {
         ISignatureValidator validator = ISignatureValidator(msg.sender);
         bytes4 value = validator.isValidSignature(abi.encode(_dataHash), _signature);
         return (value == EIP1271_MAGIC_VALUE) ? UPDATED_MAGIC_VALUE : bytes4(0);
@@ -84,7 +106,10 @@ contract CompatibilityFallbackHandler is DefaultCallbackHandler, ISignatureValid
      * @param targetContract Address of the contract containing the code to execute.
      * @param calldataPayload Calldata that should be sent to the target contract (encoded method name and arguments).
      */
-    function simulate(address targetContract, bytes calldata calldataPayload) external returns (bytes memory response) {
+    function simulate(address targetContract, bytes calldata calldataPayload)
+        external
+        returns (bytes memory response)
+    {
         // Suppress compiler warnings about not using parameters, while allowing
         // parameters to keep names for documentation purposes. This does not
         // generate code.

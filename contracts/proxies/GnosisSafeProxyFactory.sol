@@ -12,7 +12,10 @@ contract GnosisSafeProxyFactory {
     /// @dev Allows to create new proxy contact and execute a message call to the new proxy within one transaction.
     /// @param singleton Address of singleton contract.
     /// @param data Payload for message call sent to new proxy contract.
-    function createProxy(address singleton, bytes memory data) public returns (GnosisSafeProxy proxy) {
+    function createProxy(address singleton, bytes memory data)
+        public
+        returns (GnosisSafeProxy proxy)
+    {
         proxy = new GnosisSafeProxy(singleton);
         if (data.length > 0)
             // solhint-disable-next-line no-inline-assembly
@@ -46,7 +49,10 @@ contract GnosisSafeProxyFactory {
     ) internal returns (GnosisSafeProxy proxy) {
         // If the initializer changes the proxy address should change too. Hashing the initializer data is cheaper than just concatinating it
         bytes32 salt = keccak256(abi.encodePacked(keccak256(initializer), saltNonce));
-        bytes memory deploymentData = abi.encodePacked(type(GnosisSafeProxy).creationCode, uint256(uint160(_singleton)));
+        bytes memory deploymentData = abi.encodePacked(
+            type(GnosisSafeProxy).creationCode,
+            uint256(uint160(_singleton))
+        );
         // solhint-disable-next-line no-inline-assembly
         assembly {
             proxy := create2(0x0, add(0x20, deploymentData), mload(deploymentData), salt)
@@ -87,7 +93,8 @@ contract GnosisSafeProxyFactory {
     ) public returns (GnosisSafeProxy proxy) {
         uint256 saltNonceWithCallback = uint256(keccak256(abi.encodePacked(saltNonce, callback)));
         proxy = createProxyWithNonce(_singleton, initializer, saltNonceWithCallback);
-        if (address(callback) != address(0)) callback.proxyCreated(proxy, _singleton, initializer, saltNonce);
+        if (address(callback) != address(0))
+            callback.proxyCreated(proxy, _singleton, initializer, saltNonce);
     }
 
     /// @dev Allows to get the address for a new proxy contact created via `createProxyWithNonce`

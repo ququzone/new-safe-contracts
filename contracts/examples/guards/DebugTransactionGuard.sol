@@ -27,7 +27,12 @@ contract DebugTransactionGuard is Guard {
         uint256 nonce
     );
 
-    event GasUsage(address indexed safe, bytes32 indexed txHash, uint256 indexed nonce, bool success);
+    event GasUsage(
+        address indexed safe,
+        bytes32 indexed txHash,
+        uint256 indexed nonce,
+        bool success
+    );
 
     mapping(bytes32 => uint256) public txNonces;
 
@@ -50,9 +55,30 @@ contract DebugTransactionGuard is Guard {
         {
             GnosisSafe safe = GnosisSafe(payable(msg.sender));
             nonce = safe.nonce() - 1;
-            txHash = safe.getTransactionHash(to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, nonce);
+            txHash = safe.getTransactionHash(
+                to,
+                value,
+                data,
+                operation,
+                safeTxGas,
+                baseGas,
+                gasPrice,
+                gasToken,
+                refundReceiver,
+                nonce
+            );
         }
-        emit TransactionDetails(msg.sender, txHash, to, value, data, operation, safeTxGas, gasPrice > 0, nonce);
+        emit TransactionDetails(
+            msg.sender,
+            txHash,
+            to,
+            value,
+            data,
+            operation,
+            safeTxGas,
+            gasPrice > 0,
+            nonce
+        );
         txNonces[txHash] = nonce;
     }
 

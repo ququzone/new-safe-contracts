@@ -19,7 +19,10 @@ contract CreateCall {
         emit ContractCreation(newContract);
     }
 
-    function performCreate(uint256 value, bytes memory deploymentData) public returns (address newContract) {
+    function performCreate(uint256 value, bytes memory deploymentData)
+        public
+        returns (address newContract)
+    {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             newContract := create(value, add(deploymentData, 0x20), mload(deploymentData))
