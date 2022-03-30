@@ -1,0 +1,109 @@
+{
+  "address": "0x06326d0214E837063b096f25512198EEf06D3Da0",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newContract",
+          "type": "address"
+        }
+      ],
+      "name": "ContractCreation",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "deploymentData",
+          "type": "bytes"
+        }
+      ],
+      "name": "performCreate",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "newContract",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "deploymentData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "performCreate2",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "newContract",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x8ae758c75f0d18a44de92012ff3d150174458fba415b6f40b037045e0f368dcd",
+  "receipt": {
+    "to": null,
+    "from": "0x8896780a7912829781f70344Ab93E589dDdb2930",
+    "contractAddress": "0x06326d0214E837063b096f25512198EEf06D3Da0",
+    "transactionIndex": 0,
+    "gasUsed": "249502",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xef31a416b911923d6e8345ffe245a0a00ce9c90261878546ff5e6822286d465b",
+    "transactionHash": "0x8ae758c75f0d18a44de92012ff3d150174458fba415b6f40b037045e0f368dcd",
+    "logs": [],
+    "blockNumber": 13585722,
+    "cumulativeGasUsed": "249502",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "19f3c4743d3d523f56b1ab7b6b68a506",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newContract\",\"type\":\"address\"}],\"name\":\"ContractCreation\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"deploymentData\",\"type\":\"bytes\"}],\"name\":\"performCreate\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"newContract\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"deploymentData\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"}],\"name\":\"performCreate2\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"newContract\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Richard Meissner - <richard@gnosis.io>\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Create Call - Allows to use the different create opcodes to deploy a contract\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/libraries/CreateCall.sol\":\"CreateCall\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":800},\"remappings\":[]},\"sources\":{\"contracts/libraries/CreateCall.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/// @title Create Call - Allows to use the different create opcodes to deploy a contract\\n/// @author Richard Meissner - <richard@gnosis.io>\\ncontract CreateCall {\\n    event ContractCreation(address newContract);\\n\\n    function performCreate2(\\n        uint256 value,\\n        bytes memory deploymentData,\\n        bytes32 salt\\n    ) public returns (address newContract) {\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            newContract := create2(value, add(0x20, deploymentData), mload(deploymentData), salt)\\n        }\\n        require(newContract != address(0), \\\"Could not deploy contract\\\");\\n        emit ContractCreation(newContract);\\n    }\\n\\n    function performCreate(uint256 value, bytes memory deploymentData)\\n        public\\n        returns (address newContract)\\n    {\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            newContract := create(value, add(deploymentData, 0x20), mload(deploymentData))\\n        }\\n        require(newContract != address(0), \\\"Could not deploy contract\\\");\\n        emit ContractCreation(newContract);\\n    }\\n}\\n\",\"keccak256\":\"0xc9e6cae1aad15e8c826ab9fff1e5133304835c782496edc6bc52cff6c59fe742\",\"license\":\"LGPL-3.0-only\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610313806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80634847be6f1461003b5780634c8c9ea11461006a575b600080fd5b61004e6100493660046102a0565b61007d565b6040516001600160a01b03909116815260200160405180910390f35b61004e610078366004610259565b610128565b60008183518460200186f590506001600160a01b0381166100e55760405162461bcd60e51b815260206004820152601960248201527f436f756c64206e6f74206465706c6f7920636f6e74726163740000000000000060448201526064015b60405180910390fd5b6040516001600160a01b03821681527f4db17dd5e4732fb6da34a148104a592783ca119a1e7bb8829eba6cbadef0b5119060200160405180910390a19392505050565b600081516020830184f090506001600160a01b03811661018a5760405162461bcd60e51b815260206004820152601960248201527f436f756c64206e6f74206465706c6f7920636f6e74726163740000000000000060448201526064016100dc565b6040516001600160a01b03821681527f4db17dd5e4732fb6da34a148104a592783ca119a1e7bb8829eba6cbadef0b5119060200160405180910390a192915050565b600082601f8301126101dd57600080fd5b813567ffffffffffffffff808211156101f8576101f86102f0565b604051601f8301601f19908116603f01168101908282118183101715610220576102206102f0565b8160405283815286602085880101111561023957600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561026c57600080fd5b82359150602083013567ffffffffffffffff81111561028a57600080fd5b610296858286016101cc565b9150509250929050565b6000806000606084860312156102b557600080fd5b83359250602084013567ffffffffffffffff8111156102d357600080fd5b6102df868287016101cc565b925050604084013590509250925092565b634e487b7160e01b600052604160045260246000fdfea164736f6c6343000807000a",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80634847be6f1461003b5780634c8c9ea11461006a575b600080fd5b61004e6100493660046102a0565b61007d565b6040516001600160a01b03909116815260200160405180910390f35b61004e610078366004610259565b610128565b60008183518460200186f590506001600160a01b0381166100e55760405162461bcd60e51b815260206004820152601960248201527f436f756c64206e6f74206465706c6f7920636f6e74726163740000000000000060448201526064015b60405180910390fd5b6040516001600160a01b03821681527f4db17dd5e4732fb6da34a148104a592783ca119a1e7bb8829eba6cbadef0b5119060200160405180910390a19392505050565b600081516020830184f090506001600160a01b03811661018a5760405162461bcd60e51b815260206004820152601960248201527f436f756c64206e6f74206465706c6f7920636f6e74726163740000000000000060448201526064016100dc565b6040516001600160a01b03821681527f4db17dd5e4732fb6da34a148104a592783ca119a1e7bb8829eba6cbadef0b5119060200160405180910390a192915050565b600082601f8301126101dd57600080fd5b813567ffffffffffffffff808211156101f8576101f86102f0565b604051601f8301601f19908116603f01168101908282118183101715610220576102206102f0565b8160405283815286602085880101111561023957600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561026c57600080fd5b82359150602083013567ffffffffffffffff81111561028a57600080fd5b610296858286016101cc565b9150509250929050565b6000806000606084860312156102b557600080fd5b83359250602084013567ffffffffffffffff8111156102d357600080fd5b6102df868287016101cc565b925050604084013590509250925092565b634e487b7160e01b600052604160045260246000fdfea164736f6c6343000807000a",
+  "devdoc": {
+    "author": "Richard Meissner - <richard@gnosis.io>",
+    "kind": "dev",
+    "methods": {},
+    "title": "Create Call - Allows to use the different create opcodes to deploy a contract",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "address": "0x7ac98797b98D726F23ad963eDc40F0af22ef5ad1",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "enum Enum.Operation",
+          "name": "operation",
+          "type": "uint8"
+        }
+      ],
+      "name": "simulate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "estimate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "returnData",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x2a75ce194342ec05cecae421053453eb7d2b05fbb9bada940542a359b73f2689",
+  "receipt": {
+    "to": null,
+    "from": "0x8896780a7912829781f70344Ab93E589dDdb2930",
+    "contractAddress": "0x7ac98797b98D726F23ad963eDc40F0af22ef5ad1",
+    "transactionIndex": 0,
+    "gasUsed": "269846",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x760d12e5b2fd8bdd2707ea59c00727a16ad505f732213d4980376500f81771eb",
+    "transactionHash": "0x2a75ce194342ec05cecae421053453eb7d2b05fbb9bada940542a359b73f2689",
+    "logs": [],
+    "blockNumber": 13585581,
+    "cumulativeGasUsed": "269846",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "1900b8af642c5842b883eb4064bff840",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"enum Enum.Operation\",\"name\":\"operation\",\"type\":\"uint8\"}],\"name\":\"simulate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"estimate\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"returnData\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Richard Meissner - <richard@gnosis.pm>\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Simulate Transaction Accessor - can be used with StorageAccessible to simulate Safe transactions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/accessors/SimulateTxAccessor.sol\":\"SimulateTxAccessor\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":800},\"remappings\":[]},\"sources\":{\"contracts/accessors/SimulateTxAccessor.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\nimport \\\"../base/Executor.sol\\\";\\n\\n/// @title Simulate Transaction Accessor - can be used with StorageAccessible to simulate Safe transactions\\n/// @author Richard Meissner - <richard@gnosis.pm>\\ncontract SimulateTxAccessor is Executor {\\n    address private immutable accessorSingleton;\\n\\n    constructor() {\\n        accessorSingleton = address(this);\\n    }\\n\\n    modifier onlyDelegateCall() {\\n        require(\\n            address(this) != accessorSingleton,\\n            \\\"SimulateTxAccessor should only be called via delegatecall\\\"\\n        );\\n        _;\\n    }\\n\\n    function simulate(\\n        address to,\\n        uint256 value,\\n        bytes calldata data,\\n        Enum.Operation operation\\n    )\\n        external\\n        onlyDelegateCall\\n        returns (\\n            uint256 estimate,\\n            bool success,\\n            bytes memory returnData\\n        )\\n    {\\n        uint256 startGas = gasleft();\\n        success = execute(to, value, data, operation, gasleft());\\n        estimate = startGas - gasleft();\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly {\\n            // Load free memory location\\n            let ptr := mload(0x40)\\n            // We allocate memory for the return data by setting the free memory location to\\n            // current free memory location + data size + 32 bytes for data size value\\n            mstore(0x40, add(ptr, add(returndatasize(), 0x20)))\\n            // Store the size\\n            mstore(ptr, returndatasize())\\n            // Store the data\\n            returndatacopy(add(ptr, 0x20), 0, returndatasize())\\n            // Point the return data to the correct memory location\\n            returnData := ptr\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xd3477f802ce80a16a1d1f792db932dcfa9e4d1033622510ce32fd02462f635d8\",\"license\":\"LGPL-3.0-only\"},\"contracts/base/Executor.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\nimport \\\"../common/Enum.sol\\\";\\n\\n/// @title Executor - A contract that can execute transactions\\n/// @author Richard Meissner - <richard@gnosis.pm>\\ncontract Executor {\\n    function execute(\\n        address to,\\n        uint256 value,\\n        bytes memory data,\\n        Enum.Operation operation,\\n        uint256 txGas\\n    ) internal returns (bool success) {\\n        if (operation == Enum.Operation.DelegateCall) {\\n            // solhint-disable-next-line no-inline-assembly\\n            assembly {\\n                success := delegatecall(txGas, to, add(data, 0x20), mload(data), 0, 0)\\n            }\\n        } else {\\n            // solhint-disable-next-line no-inline-assembly\\n            assembly {\\n                success := call(txGas, to, value, add(data, 0x20), mload(data), 0, 0)\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x4d3a900673473466bc27413fdbb11aae60b5580b792c49411f01544e0b24fe08\",\"license\":\"LGPL-3.0-only\"},\"contracts/common/Enum.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/// @title Enum - Collection of enums\\n/// @author Richard Meissner - <richard@gnosis.pm>\\ncontract Enum {\\n    enum Operation {\\n        Call,\\n        DelegateCall\\n    }\\n}\\n\",\"keccak256\":\"0xe9ad283c06a2d2311b882f499d7a935608a25ac698b7ed5c4124f9f310e8696d\",\"license\":\"LGPL-3.0-only\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b5030606081901b6080526103516100316000396000607801526103516000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c80631c5fb21114610030575b600080fd5b61004361003e3660046101ea565b61005b565b604051610052939291906102a3565b60405180910390f35b60008060603073ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001614156101105760405162461bcd60e51b815260206004820152603960248201527f53696d756c61746554784163636573736f722073686f756c64206f6e6c79206260448201527f652063616c6c6564207669612064656c656761746563616c6c00000000000000606482015260840160405180910390fd5b60005a9050610158898989898080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152508b925050505a61018e565b92505a6101659082610309565b935060405160203d0181016040523d81523d6000602083013e8092505050955095509592505050565b600060018360018111156101a4576101a461032e565b14156101bd576000808551602087018986f490506101cd565b600080855160208701888a87f190505b95945050505050565b8035600281106101e557600080fd5b919050565b60008060008060006080868803121561020257600080fd5b853573ffffffffffffffffffffffffffffffffffffffff8116811461022657600080fd5b945060208601359350604086013567ffffffffffffffff8082111561024a57600080fd5b818801915088601f83011261025e57600080fd5b81358181111561026d57600080fd5b89602082850101111561027f57600080fd5b602083019550809450505050610297606087016101d6565b90509295509295909350565b838152600060208415158184015260606040840152835180606085015260005b818110156102df578581018301518582016080015282016102c3565b818111156102f1576000608083870101525b50601f01601f19169290920160800195945050505050565b60008282101561032957634e487b7160e01b600052601160045260246000fd5b500390565b634e487b7160e01b600052602160045260246000fdfea164736f6c6343000807000a",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c80631c5fb21114610030575b600080fd5b61004361003e3660046101ea565b61005b565b604051610052939291906102a3565b60405180910390f35b60008060603073ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001614156101105760405162461bcd60e51b815260206004820152603960248201527f53696d756c61746554784163636573736f722073686f756c64206f6e6c79206260448201527f652063616c6c6564207669612064656c656761746563616c6c00000000000000606482015260840160405180910390fd5b60005a9050610158898989898080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152508b925050505a61018e565b92505a6101659082610309565b935060405160203d0181016040523d81523d6000602083013e8092505050955095509592505050565b600060018360018111156101a4576101a461032e565b14156101bd576000808551602087018986f490506101cd565b600080855160208701888a87f190505b95945050505050565b8035600281106101e557600080fd5b919050565b60008060008060006080868803121561020257600080fd5b853573ffffffffffffffffffffffffffffffffffffffff8116811461022657600080fd5b945060208601359350604086013567ffffffffffffffff8082111561024a57600080fd5b818801915088601f83011261025e57600080fd5b81358181111561026d57600080fd5b89602082850101111561027f57600080fd5b602083019550809450505050610297606087016101d6565b90509295509295909350565b838152600060208415158184015260606040840152835180606085015260005b818110156102df578581018301518582016080015282016102c3565b818111156102f1576000608083870101525b50601f01601f19169290920160800195945050505050565b60008282101561032957634e487b7160e01b600052601160045260246000fd5b500390565b634e487b7160e01b600052602160045260246000fdfea164736f6c6343000807000a",
+  "devdoc": {
+    "author": "Richard Meissner - <richard@gnosis.pm>",
+    "kind": "dev",
+    "methods": {},
+    "title": "Simulate Transaction Accessor - can be used with StorageAccessible to simulate Safe transactions",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

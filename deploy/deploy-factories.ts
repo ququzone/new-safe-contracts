@@ -5,7 +5,7 @@ module.exports = async ({ ethers, getNamedAccounts, deployments }) => {
     const namedAccounts = await getNamedAccounts()
     const { deployer } = namedAccounts
 
-    const deployResult = await deploy("ExampleToken", {
+    const deployResult = await deploy("GnosisSafeProxyFactory", {
         from: deployer,
         args: [],
         log: true,
@@ -13,8 +13,8 @@ module.exports = async ({ ethers, getNamedAccounts, deployments }) => {
     })
     if (deployResult.newlyDeployed) {
         log(
-            `contract ExampleToken deployed at ${deployResult.address} using ${deployResult.receipt.gasUsed} gas`
+            `contract GnosisSafeProxyFactory deployed at ${deployResult.address} using ${deployResult.receipt.gasUsed} gas`
         )
     }
 }
-module.exports.tags = ["ExampleToken"]
+module.exports.tags = ["factory"]

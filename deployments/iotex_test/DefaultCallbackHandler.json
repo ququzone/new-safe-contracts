@@ -1,0 +1,242 @@
+{
+  "address": "0x33CD3dA013587B15a7D19d8816c1ABa33a0FB49F",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "VERSION",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155BatchReceived",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "tokensReceived",
+      "outputs": [],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x8867a38a901376b2817c9228b6ca450ba2e5a3ed2728435e70ac7717be94ed1c",
+  "receipt": {
+    "to": null,
+    "from": "0x8896780a7912829781f70344Ab93E589dDdb2930",
+    "contractAddress": "0x33CD3dA013587B15a7D19d8816c1ABa33a0FB49F",
+    "transactionIndex": 0,
+    "gasUsed": "438924",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x202c4c86d9b31eb1e9e227a6eb8221ef06fbca17fcffc4d9ebeedc2e6a6ee1fe",
+    "transactionHash": "0x8867a38a901376b2817c9228b6ca450ba2e5a3ed2728435e70ac7717be94ed1c",
+    "logs": [],
+    "blockNumber": 13585586,
+    "cumulativeGasUsed": "438924",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "1900b8af642c5842b883eb4064bff840",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"NAME\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"VERSION\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"tokensReceived\",\"outputs\":[],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Richard Meissner - <richard@gnosis.pm>\",\"kind\":\"dev\",\"methods\":{\"supportsInterface(bytes4)\":{\"details\":\"Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas.\"}},\"title\":\"Default Callback Handler - returns true for known token callbacks\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/handler/DefaultCallbackHandler.sol\":\"DefaultCallbackHandler\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":800},\"remappings\":[]},\"sources\":{\"contracts/handler/DefaultCallbackHandler.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\nimport \\\"../interfaces/ERC1155TokenReceiver.sol\\\";\\nimport \\\"../interfaces/ERC721TokenReceiver.sol\\\";\\nimport \\\"../interfaces/ERC777TokensRecipient.sol\\\";\\nimport \\\"../interfaces/IERC165.sol\\\";\\n\\n/// @title Default Callback Handler - returns true for known token callbacks\\n/// @author Richard Meissner - <richard@gnosis.pm>\\ncontract DefaultCallbackHandler is\\n    ERC1155TokenReceiver,\\n    ERC777TokensRecipient,\\n    ERC721TokenReceiver,\\n    IERC165\\n{\\n    string public constant NAME = \\\"Default Callback Handler\\\";\\n    string public constant VERSION = \\\"1.0.0\\\";\\n\\n    function onERC1155Received(\\n        address,\\n        address,\\n        uint256,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return 0xf23a6e61;\\n    }\\n\\n    function onERC1155BatchReceived(\\n        address,\\n        address,\\n        uint256[] calldata,\\n        uint256[] calldata,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return 0xbc197c81;\\n    }\\n\\n    function onERC721Received(\\n        address,\\n        address,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return 0x150b7a02;\\n    }\\n\\n    function tokensReceived(\\n        address,\\n        address,\\n        address,\\n        uint256,\\n        bytes calldata,\\n        bytes calldata\\n    ) external pure override {\\n        // We implement this for completeness, doesn't really have any value\\n    }\\n\\n    function supportsInterface(bytes4 interfaceId) external view virtual override returns (bool) {\\n        return\\n            interfaceId == type(ERC1155TokenReceiver).interfaceId ||\\n            interfaceId == type(ERC721TokenReceiver).interfaceId ||\\n            interfaceId == type(IERC165).interfaceId;\\n    }\\n}\\n\",\"keccak256\":\"0xf1bce8e6f943dc565ea8dda3f102aec46e2a6e569461172799a04a5fb8777d18\",\"license\":\"LGPL-3.0-only\"},\"contracts/interfaces/ERC1155TokenReceiver.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/**\\n    Note: The ERC-165 identifier for this interface is 0x4e2312e0.\\n*/\\ninterface ERC1155TokenReceiver {\\n    /**\\n        @notice Handle the receipt of a single ERC1155 token type.\\n        @dev An ERC1155-compliant smart contract MUST call this function on the token recipient contract, at the end of a `safeTransferFrom` after the balance has been updated.        \\n        This function MUST return `bytes4(keccak256(\\\"onERC1155Received(address,address,uint256,uint256,bytes)\\\"))` (i.e. 0xf23a6e61) if it accepts the transfer.\\n        This function MUST revert if it rejects the transfer.\\n        Return of any other value than the prescribed keccak256 generated value MUST result in the transaction being reverted by the caller.\\n        @param _operator  The address which initiated the transfer (i.e. msg.sender)\\n        @param _from      The address which previously owned the token\\n        @param _id        The ID of the token being transferred\\n        @param _value     The amount of tokens being transferred\\n        @param _data      Additional data with no specified format\\n        @return           `bytes4(keccak256(\\\"onERC1155Received(address,address,uint256,uint256,bytes)\\\"))`\\n    */\\n    function onERC1155Received(\\n        address _operator,\\n        address _from,\\n        uint256 _id,\\n        uint256 _value,\\n        bytes calldata _data\\n    ) external returns (bytes4);\\n\\n    /**\\n        @notice Handle the receipt of multiple ERC1155 token types.\\n        @dev An ERC1155-compliant smart contract MUST call this function on the token recipient contract, at the end of a `safeBatchTransferFrom` after the balances have been updated.        \\n        This function MUST return `bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))` (i.e. 0xbc197c81) if it accepts the transfer(s).\\n        This function MUST revert if it rejects the transfer(s).\\n        Return of any other value than the prescribed keccak256 generated value MUST result in the transaction being reverted by the caller.\\n        @param _operator  The address which initiated the batch transfer (i.e. msg.sender)\\n        @param _from      The address which previously owned the token\\n        @param _ids       An array containing ids of each token being transferred (order and length must match _values array)\\n        @param _values    An array containing amounts of each token being transferred (order and length must match _ids array)\\n        @param _data      Additional data with no specified format\\n        @return           `bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))`\\n    */\\n    function onERC1155BatchReceived(\\n        address _operator,\\n        address _from,\\n        uint256[] calldata _ids,\\n        uint256[] calldata _values,\\n        bytes calldata _data\\n    ) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0x7894ef55ee3334f6388e5e1d749bbabd85fc03d5a2ab949f284bce830f8aa398\",\"license\":\"LGPL-3.0-only\"},\"contracts/interfaces/ERC721TokenReceiver.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/// @dev Note: the ERC-165 identifier for this interface is 0x150b7a02.\\ninterface ERC721TokenReceiver {\\n    /// @notice Handle the receipt of an NFT\\n    /// @dev The ERC721 smart contract calls this function on the recipient\\n    ///  after a `transfer`. This function MAY throw to revert and reject the\\n    ///  transfer. Return of other than the magic value MUST result in the\\n    ///  transaction being reverted.\\n    ///  Note: the contract address is always the message sender.\\n    /// @param _operator The address which called `safeTransferFrom` function\\n    /// @param _from The address which previously owned the token\\n    /// @param _tokenId The NFT identifier which is being transferred\\n    /// @param _data Additional data with no specified format\\n    /// @return `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`\\n    ///  unless throwing\\n    function onERC721Received(\\n        address _operator,\\n        address _from,\\n        uint256 _tokenId,\\n        bytes calldata _data\\n    ) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0x8a3dd41df3a49d9ae2d45dd4087ca595946ed3c6051b8aa304727017b5eabaa4\",\"license\":\"LGPL-3.0-only\"},\"contracts/interfaces/ERC777TokensRecipient.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\ninterface ERC777TokensRecipient {\\n    function tokensReceived(\\n        address operator,\\n        address from,\\n        address to,\\n        uint256 amount,\\n        bytes calldata data,\\n        bytes calldata operatorData\\n    ) external;\\n}\\n\",\"keccak256\":\"0x1cfbdb95761067c5bc35599fcae6c11e487f2879d7fa2c6f47e7b94506b4039c\",\"license\":\"LGPL-3.0-only\"},\"contracts/interfaces/IERC165.sol\":{\"content\":\"// SPDX-License-Identifier: LGPL-3.0-only\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/// @notice More details at https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/IERC165.sol\\ninterface IERC165 {\\n    /**\\n     * @dev Returns true if this contract implements the interface defined by\\n     * `interfaceId`. See the corresponding\\n     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]\\n     * to learn more about how these ids are created.\\n     *\\n     * This function call must use less than 30 000 gas.\\n     */\\n    function supportsInterface(bytes4 interfaceId) external view returns (bool);\\n}\\n\",\"keccak256\":\"0x5c64c2e071245db8fe3ea8b94f73c5a8de236933858ae240348d502433a9d178\",\"license\":\"LGPL-3.0-only\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061058a806100206000396000f3fe608060405234801561001057600080fd5b506004361061007c5760003560e01c8063a3f4df7e1161005b578063a3f4df7e146100fb578063bc197c8114610144578063f23a6e6114610166578063ffa1ad741461018657600080fd5b806223de291461008157806301ffc9a71461009b578063150b7a02146100c3575b600080fd5b61009961008f3660046102cb565b5050505050505050565b005b6100ae6100a93660046104f7565b6101c2565b60405190151581526020015b60405180910390f35b6100e26100d1366004610410565b630a85bd0160e11b95945050505050565b6040516001600160e01b031990911681526020016100ba565b6101376040518060400160405280601881526020017f44656661756c742043616c6c6261636b2048616e646c6572000000000000000081525081565b6040516100ba9190610528565b6100e2610152366004610376565b63bc197c8160e01b98975050505050505050565b6100e261017436600461047f565b63f23a6e6160e01b9695505050505050565b6101376040518060400160405280600581526020017f312e302e3000000000000000000000000000000000000000000000000000000081525081565b60006001600160e01b03198216630271189760e51b14806101f357506001600160e01b03198216630a85bd0160e11b145b8061020e57506001600160e01b031982166301ffc9a760e01b145b92915050565b803573ffffffffffffffffffffffffffffffffffffffff8116811461023857600080fd5b919050565b60008083601f84011261024f57600080fd5b50813567ffffffffffffffff81111561026757600080fd5b6020830191508360208260051b850101111561028257600080fd5b9250929050565b60008083601f84011261029b57600080fd5b50813567ffffffffffffffff8111156102b357600080fd5b60208301915083602082850101111561028257600080fd5b60008060008060008060008060c0898b0312156102e757600080fd5b6102f089610214565b97506102fe60208a01610214565b965061030c60408a01610214565b955060608901359450608089013567ffffffffffffffff8082111561033057600080fd5b61033c8c838d01610289565b909650945060a08b013591508082111561035557600080fd5b506103628b828c01610289565b999c989b5096995094979396929594505050565b60008060008060008060008060a0898b03121561039257600080fd5b61039b89610214565b97506103a960208a01610214565b9650604089013567ffffffffffffffff808211156103c657600080fd5b6103d28c838d0161023d565b909850965060608b01359150808211156103eb57600080fd5b6103f78c838d0161023d565b909650945060808b013591508082111561035557600080fd5b60008060008060006080868803121561042857600080fd5b61043186610214565b945061043f60208701610214565b935060408601359250606086013567ffffffffffffffff81111561046257600080fd5b61046e88828901610289565b969995985093965092949392505050565b60008060008060008060a0878903121561049857600080fd5b6104a187610214565b95506104af60208801610214565b94506040870135935060608701359250608087013567ffffffffffffffff8111156104d957600080fd5b6104e589828a01610289565b979a9699509497509295939492505050565b60006020828403121561050957600080fd5b81356001600160e01b03198116811461052157600080fd5b9392505050565b600060208083528351808285015260005b8181101561055557858101830151858201604001528201610539565b81811115610567576000604083870101525b50601f01601f191692909201604001939250505056fea164736f6c6343000807000a",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007c5760003560e01c8063a3f4df7e1161005b578063a3f4df7e146100fb578063bc197c8114610144578063f23a6e6114610166578063ffa1ad741461018657600080fd5b806223de291461008157806301ffc9a71461009b578063150b7a02146100c3575b600080fd5b61009961008f3660046102cb565b5050505050505050565b005b6100ae6100a93660046104f7565b6101c2565b60405190151581526020015b60405180910390f35b6100e26100d1366004610410565b630a85bd0160e11b95945050505050565b6040516001600160e01b031990911681526020016100ba565b6101376040518060400160405280601881526020017f44656661756c742043616c6c6261636b2048616e646c6572000000000000000081525081565b6040516100ba9190610528565b6100e2610152366004610376565b63bc197c8160e01b98975050505050505050565b6100e261017436600461047f565b63f23a6e6160e01b9695505050505050565b6101376040518060400160405280600581526020017f312e302e3000000000000000000000000000000000000000000000000000000081525081565b60006001600160e01b03198216630271189760e51b14806101f357506001600160e01b03198216630a85bd0160e11b145b8061020e57506001600160e01b031982166301ffc9a760e01b145b92915050565b803573ffffffffffffffffffffffffffffffffffffffff8116811461023857600080fd5b919050565b60008083601f84011261024f57600080fd5b50813567ffffffffffffffff81111561026757600080fd5b6020830191508360208260051b850101111561028257600080fd5b9250929050565b60008083601f84011261029b57600080fd5b50813567ffffffffffffffff8111156102b357600080fd5b60208301915083602082850101111561028257600080fd5b60008060008060008060008060c0898b0312156102e757600080fd5b6102f089610214565b97506102fe60208a01610214565b965061030c60408a01610214565b955060608901359450608089013567ffffffffffffffff8082111561033057600080fd5b61033c8c838d01610289565b909650945060a08b013591508082111561035557600080fd5b506103628b828c01610289565b999c989b5096995094979396929594505050565b60008060008060008060008060a0898b03121561039257600080fd5b61039b89610214565b97506103a960208a01610214565b9650604089013567ffffffffffffffff808211156103c657600080fd5b6103d28c838d0161023d565b909850965060608b01359150808211156103eb57600080fd5b6103f78c838d0161023d565b909650945060808b013591508082111561035557600080fd5b60008060008060006080868803121561042857600080fd5b61043186610214565b945061043f60208701610214565b935060408601359250606086013567ffffffffffffffff81111561046257600080fd5b61046e88828901610289565b969995985093965092949392505050565b60008060008060008060a0878903121561049857600080fd5b6104a187610214565b95506104af60208801610214565b94506040870135935060608701359250608087013567ffffffffffffffff8111156104d957600080fd5b6104e589828a01610289565b979a9699509497509295939492505050565b60006020828403121561050957600080fd5b81356001600160e01b03198116811461052157600080fd5b9392505050565b600060208083528351808285015260005b8181101561055557858101830151858201604001528201610539565b81811115610567576000604083870101525b50601f01601f191692909201604001939250505056fea164736f6c6343000807000a",
+  "devdoc": {
+    "author": "Richard Meissner - <richard@gnosis.pm>",
+    "kind": "dev",
+    "methods": {
+      "supportsInterface(bytes4)": {
+        "details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+      }
+    },
+    "title": "Default Callback Handler - returns true for known token callbacks",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
