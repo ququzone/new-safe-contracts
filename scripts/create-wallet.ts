@@ -3,7 +3,6 @@ import { AddressZero } from "@ethersproject/constants"
 
 import { calculateProxyAddress } from "./utils/proxies"
 
-
 async function main() {
     const { get, execute } = deployments
 
