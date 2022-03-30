@@ -68,7 +68,6 @@ contract GnosisSafe is
         // By setting the threshold it is not possible to call setup anymore,
         // so we create a Safe with 0 owners and threshold 1.
         // This is an unusable Safe, perfect for the singleton
-        nonce = 1;
         threshold = 1;
     }
 
@@ -102,6 +101,8 @@ contract GnosisSafe is
             // baseGas = 0, gasPrice = 1 and gas = payment => amount = (payment + 0) * 1 = payment
             handlePayment(payment, 0, 1, paymentToken, paymentReceiver);
         }
+
+        nonce = 1;
         emit SafeSetup(msg.sender, _owners, _threshold, to, fallbackHandler);
     }
 
