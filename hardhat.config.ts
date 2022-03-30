@@ -90,6 +90,6 @@ export default {
     },
     contractSizer: {
         runOnCompile: false,
-        only: ["ExampleToken"],
+        only: ["GnosisSafe", "GnosisSafeProxyFactory"],
     },
 }
